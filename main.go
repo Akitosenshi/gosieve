@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -22,10 +23,6 @@ func main() {
 	const max = 1000000
 	var sqr = int(math.Sqrt(max))
 	var primes = myDict[max]
-	digits := 0
-	for i := max; i == 0; i /= 10 {
-		digits++
-	}
 	var sieve [max]bool
 	for i := 1; i < max; i++ {
 		sieve[i] = true
@@ -41,16 +38,16 @@ func main() {
 	}
 	t := time.Since(start)
 	// sieve done
-	startFormat := time.Now()
 	var results string
-	v := make([]string, max)
+	v := make([]string, max, max)
 	counted := 0
+	startFormat := time.Now()
 	for i := 0; i < max; i++ {
 		if sieve[i] {
-			v = append(v, fmt.Sprintf("%d is prime\n", i+1))
+			v = append(v, strconv.Itoa(i+1) + " is prime\n")
 			counted++
 		} else {
-			v = append(v, fmt.Sprintf("%d is not prime\n", i+1))
+			v = append(v, strconv.Itoa(i+1) + " is not prime\n")
 		}
 	}
 	results = strings.Join(v, "")
