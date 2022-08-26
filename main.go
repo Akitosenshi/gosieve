@@ -21,8 +21,8 @@ var myDict = map[int]int{
 
 func main() {
 	const max = 1000000
-	var sqr = int(math.Sqrt(max))
-	var primes = myDict[max]
+	sqr := int(math.Sqrt(max))
+	primes := myDict[max]
 	var sieve [max]bool
 	for i := 1; i < max; i++ {
 		sieve[i] = true
